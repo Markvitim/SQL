@@ -3,11 +3,7 @@ Thumbs.db*
 HELP.md
 .gradle
 build/
-build.gradle
-gradle/
-gradlew
-gradlew.bat
-settings.gradle
+
 
 
 ### STS ###
