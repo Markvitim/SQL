@@ -1,4 +1,4 @@
-package ru.netology.dataInfo;
+package ru.netology.operations;
 
 import lombok.SneakyThrows;
 import lombok.Value;

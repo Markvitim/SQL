@@ -1,7 +1,10 @@
-package ru.netology.dataInfo;
+package ru.netology;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
+import ru.netology.dataInfo.DataInfo;
+import ru.netology.operations.DatabaseOperations;
+import ru.netology.pages.LoginPage;
 
 import static com.codeborne.selenide.Selenide.open;
 
