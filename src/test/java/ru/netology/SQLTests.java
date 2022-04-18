@@ -1,6 +1,7 @@
 package ru.netology;
 
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import ru.netology.dataInfo.DataInfo;
 import ru.netology.operations.DatabaseOperations;
@@ -8,7 +9,15 @@ import ru.netology.pages.LoginPage;
 
 import static com.codeborne.selenide.Selenide.open;
 
+
 public class SQLTests {
+
+    @AfterAll
+    @Test
+    static void shouldCleanData() {
+        DatabaseOperations.cleanData();
+    }
+
 
     @Test
     void shouldGetDashboardPage() {
@@ -18,11 +27,6 @@ public class SQLTests {
         var verificationPage = loginPage.validAuthInfo(new DataInfo());
         var dashboardPage = verificationPage.verifyCode(DatabaseOperations.getVerificationCode());
         dashboardPage.dashboardVisible();
-    }
-
-    @Test
-    void shouldCleanData() {
-        DatabaseOperations.cleanData();
     }
 }
 

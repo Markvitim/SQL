@@ -5,7 +5,6 @@ import lombok.Value;
 import lombok.val;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
-import org.junit.jupiter.api.AfterAll;
 
 import java.sql.DriverManager;
 
@@ -33,8 +32,7 @@ public class DatabaseOperations {
     }
 
     @SneakyThrows
-    @AfterAll
-     public static void cleanData() {
+    public static void cleanData() {
         QueryRunner runner = new QueryRunner();
         var cleanCards = "DELETE FROM cards";
         var cleanUsers = "DELETE FROM users";
