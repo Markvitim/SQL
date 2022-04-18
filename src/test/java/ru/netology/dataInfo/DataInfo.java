@@ -6,7 +6,6 @@ import lombok.Value;
 public class DataInfo {
     String login = "vasya";
     String password = "qwerty123";
-
 }
 
 

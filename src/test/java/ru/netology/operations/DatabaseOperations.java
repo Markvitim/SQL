@@ -34,7 +34,7 @@ public class DatabaseOperations {
 
     @SneakyThrows
     @AfterAll
-    public static void cleanData() {
+     public static void cleanData() {
         QueryRunner runner = new QueryRunner();
         var cleanCards = "DELETE FROM cards";
         var cleanUsers = "DELETE FROM users";

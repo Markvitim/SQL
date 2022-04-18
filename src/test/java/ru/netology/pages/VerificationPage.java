@@ -1,6 +1,5 @@
 package ru.netology.pages;
 
-import ru.netology.pages.DashboardPage;
 
 import static com.codeborne.selenide.Selenide.$;
 

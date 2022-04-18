@@ -9,10 +9,6 @@ import ru.netology.pages.LoginPage;
 import static com.codeborne.selenide.Selenide.open;
 
 public class SQLTests {
-    @Test
-    void shouldGetVerificationCode() {
-        DatabaseOperations.getVerificationCode();
-    }
 
     @Test
     void shouldGetDashboardPage() {
