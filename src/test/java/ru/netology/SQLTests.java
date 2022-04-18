@@ -13,7 +13,6 @@ import static com.codeborne.selenide.Selenide.open;
 public class SQLTests {
 
     @AfterAll
-    @Test
     static void shouldCleanData() {
         DatabaseOperations.cleanData();
     }
