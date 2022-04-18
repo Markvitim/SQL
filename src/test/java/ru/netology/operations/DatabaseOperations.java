@@ -5,10 +5,9 @@ import lombok.Value;
 import lombok.val;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterAll;
 
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 
 @Value
 public class DatabaseOperations {
@@ -25,7 +24,6 @@ public class DatabaseOperations {
                 var conn = DriverManager.getConnection(
                         "jdbc:mysql://localhost:3306/app", "app", "pass"
                 );
-                PreparedStatement preparedStatement = conn.prepareStatement(codeSQL)
         ) {
             val code = runner.query(conn, codeSQL, new ScalarHandler<>());
             System.out.println("код верификации " + code);
@@ -35,20 +33,24 @@ public class DatabaseOperations {
     }
 
     @SneakyThrows
-    @BeforeEach
+    @AfterAll
     public static void cleanData() {
         QueryRunner runner = new QueryRunner();
+        var cleanCards = "DELETE FROM cards";
+        var cleanUsers = "DELETE FROM users";
         var cleanCardTransactions = "DELETE FROM card_transactions";
         var cleanAuthCodes = "DELETE FROM auth_codes";
+
         try (
                 var conn = DriverManager.getConnection(
                         "jdbc:mysql://localhost:3306/app", "app", "pass"
                 );
-                PreparedStatement cardTransactions = conn.prepareStatement(cleanCardTransactions);
-                PreparedStatement authCodes = conn.prepareStatement(cleanAuthCodes)
+
         ) {
-            runner.update(conn, cleanCardTransactions);
             runner.update(conn, cleanAuthCodes);
+            runner.update(conn, cleanCards);
+            runner.update(conn, cleanCardTransactions);
+            runner.update(conn, cleanUsers);
         }
     }
 }
